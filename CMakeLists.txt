@@ -1,6 +1,5 @@
-cmake_minimum_required(VERSION 3.13)  # CMake version check
+cmake_minimum_required(VERSION 2.8)  # CMake version check
 project(main_project)               # Create project "main_project"
-set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add main.c file of project root directory as source file
 set(SOURCE_FILES main.c)
