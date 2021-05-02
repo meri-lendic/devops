@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'gcc --version'
                 cmakeBuild(
-                  installation: 'InSearchPath'
+                  installation: 'main.c'
                   )
             }
         }
