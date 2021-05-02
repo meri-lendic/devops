@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'gcc --version'
                 cmakeBuild(
-                  installation: 'main.c'
+                  installation: "main.c"
                   )
             }
         }
