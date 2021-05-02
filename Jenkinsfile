@@ -8,6 +8,9 @@ pipeline {
             
             steps {
                 sh 'gcc "main.c" -o "main.exe"'
+                cmakeBuild(
+            installation: 'CMakeLists.txt'
+          )
                    }
         }
         stage('Upload') {
