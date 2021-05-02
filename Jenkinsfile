@@ -8,7 +8,7 @@ pipeline {
             
             steps {
                 sh 'gcc "main.c" -o "main.exe"'
-                sh 'make main.exe'
+                sh 'make "main.exe"'
                 sh './main.exe'
 
                    }
