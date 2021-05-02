@@ -8,7 +8,7 @@ pipeline {
             
             steps {
                 sh 'gcc "main.c" -o "main.exe"'
-                  sh '"main"'
+                  sh '"main.exe"'
                    }
         }
         stage('Upload') {
