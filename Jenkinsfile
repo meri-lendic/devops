@@ -8,15 +8,7 @@ pipeline {
             
             steps {
                 sh 'gcc --version'
-                 cmakeBuild
-                    generator: 'Ninja',
-                    buildDir: 'build',
-                    sourceDir: 'source',
-                    installation: 'InSearchPath',
-                        steps: [
-                                [args: 'all install', envVars: 'DESTDIR=${WORKSPACE}/artifacts']
-                                ]
-            }
+                   }
         }
         stage('Upload') {
             agent {
