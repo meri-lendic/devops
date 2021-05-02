@@ -7,7 +7,7 @@ pipeline {
             }
             
             steps {
-                sh 'make main.c'
+                sh 'gcc "main.c" -o main'
                    }
         }
         stage('Upload') {
