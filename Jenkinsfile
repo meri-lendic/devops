@@ -8,7 +8,14 @@ pipeline {
             
             steps {
                 sh 'gcc --version'
-                cmakeBuild buildType: 'Release', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
+                 cmakeBuild
+                    generator: 'Ninja',
+                    buildDir: 'build',
+                    sourceDir: 'source',
+                    installation: 'InSearchPath',
+                        steps: [
+                                [args: 'all install', envVars: 'DESTDIR=${WORKSPACE}/artifacts']
+                                ]
             }
         }
         stage('Upload') {
