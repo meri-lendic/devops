@@ -13,7 +13,6 @@ pipeline {
                   )
                 cmakeBuild buildType: 'Release', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
             }
-            }
         }
         stage('Upload') {
             agent {
