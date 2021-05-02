@@ -6,7 +6,7 @@ pipeline {
               label "build"
             }
             steps {
-                echo "build"
+                echo "buid"
                 cmakeBuild(
                   installation: 'InSearchPath'
                   )
