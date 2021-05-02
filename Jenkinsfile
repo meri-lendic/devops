@@ -5,8 +5,9 @@ pipeline {
             agent {
               label "build"
             }
-            steps {sh 'gcc --version'}
+            
             steps {
+                sh 'gcc --version'
                 cmakeBuild(
                   installation: 'InSearchPath'
                   )
