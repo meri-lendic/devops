@@ -13,10 +13,10 @@ pipeline {
                   }
         }
         stage('Upload') {
-            agent {
-              label "test"
-            }
             steps {
+                def getGitBranchName() {
+    return scm.branches[0].name
+}
                 sh 'echo Deploying'
             }
         }
