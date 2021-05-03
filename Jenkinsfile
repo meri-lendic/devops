@@ -47,16 +47,15 @@ pipeline {
               label "build"
             }
             steps {
-                sh 'echo Deploying from ' + getGitBranchName() ' branch.'
                 s3Upload consoleLogLevel: 'INFO', 
 	            dontSetBuildResultOnFailure: false, 
 	            dontWaitForConcurrentBuildCompletion: false, 
-	            entries: [[bucket: "${env.STORAGE_LOCATION}", 
+	            entries: [[bucket: getGitBranchName(), 
 	            excludedFile: '', flatten: false, gzipFiles: false, 
 	            keepForever: false, managedArtifacts: false, noUploadOnFailure: true, 
 	            selectedRegion: 'eu-central-1', showDirectlyInBrowser: false, sourceFile: '**/*.exe', 
                 storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: true]], 
-	            pluginFailureResultConstraint: 'FAILURE', profileName: 'S3-Artifact', userMetadata: []
+	            pluginFailureResultConstraint: 'FAILURE', profileName: 'S3-Deployment', userMetadata: []
                      
         }
     }
