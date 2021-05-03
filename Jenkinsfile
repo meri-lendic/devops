@@ -20,7 +20,7 @@ pipeline {
               label "build"
             }
             steps {
-                sh 'echo Deploying' getGitBranchNamee()
+                sh 'echo Deploying' getGitBranchName()
                 }
         }
     }
