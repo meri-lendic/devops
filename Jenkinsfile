@@ -2,12 +2,12 @@ def getGitBranchName() {
     return scm.branches[0].name
 }
 pipeline {
-    agent any
+    agent none
     stages {
-        stage('Build') {
-            agent {
+        agent {
               label "build"
             }
+        stage('Build') {
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
