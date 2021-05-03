@@ -35,7 +35,7 @@ pipeline {
                 curl -XPOST -H "Authorization: token "$TokenForGitHub"" https://api.github.com/repos/meri-lendic/devops/issues/$(git rev-parse HEAD) -d "{
                     \"state\": \"success\",
                     \"target_url\": \"${BUILD_URL}\",
-                        \"description\": \"The build has succeeded!\"
+                        \"body\": \"The build has succeeded!\"
                     }"
                 '''
                     }
