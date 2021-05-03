@@ -1,2 +1,2 @@
-# devops
+# DevOps
 DevOps Jenkins Assignment
