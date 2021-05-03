@@ -24,8 +24,13 @@ pipeline {
             }
             steps {
                 sh 'echo Deploying' + getGitBranchName()
-                        
-            withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
+                     
+        }
+    }
+    }
+   post {
+    failure {
+                  withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
                 curl -XPOST -H "Authorization: token "$TokenForGitHub" https://github.com/meri-lendic/devops/$(git rev-parse HEAD) -d "{
                     \"state\": \"failure\",
@@ -34,7 +39,6 @@ pipeline {
                     }"
                 '''
                     }
-        }
     }
-    }
+  } 
 }
