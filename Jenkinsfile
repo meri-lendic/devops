@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
-                echo "Pulling... " + env.GIT_BRANCH + " and ${GIT_BRANCH,fullName=false}"
+                echo "Pulling... " + env.GIT_BRANCH 
         }
         stage('Upload') {
             agent {
