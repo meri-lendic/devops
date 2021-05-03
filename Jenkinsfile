@@ -38,7 +38,7 @@ pipeline {
 			   success {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
-	      curl -X POST -H "Authorization: Token "$TokenForGitHub"" --data  "{\\"state\\": \\"success\\"}" --url https://api.github.com/repos/meri-lendic/devops//statuses/$GIT_COMMIT'
+	      curl -X POST -H "Authorization: Token "$TokenForGitHub"" --data  "{\"state\": \"success\"}" --url https://api.github.com/repos/meri-lendic/devops//statuses/$GIT_COMMIT'
 
                 '''
                     }
