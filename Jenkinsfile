@@ -5,11 +5,11 @@ pipeline {
             agent {
               label "build"
             }
-            
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
                 echo "Pulling... " + env.GIT_BRANCH
+                  }
         }
         stage('Upload') {
             agent {
@@ -20,5 +20,4 @@ pipeline {
             }
         }
     }
-}
 }
