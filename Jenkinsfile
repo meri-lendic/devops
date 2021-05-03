@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
+                sh 'pwd'
                 echo "Pulling... " + env.GIT_BRANCH
                   }
         }
