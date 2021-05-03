@@ -5,14 +5,17 @@ pipeline {
     agent none
     stages {
         stage('Build') {
+            //define an agent to run this stage
             agent {
               label "build"
             }
             steps {
-                sh 'gcc main.c -o main.exe'
-                sh './main.exe'
-                sh 'pwd'
-                echo "Pulling... " + env.GIT_BRANCH
+                //compile main.c and execute it
+                sh '''
+                    gcc main.c -o main.exe
+                    ./main.exe
+                    '''
+                echo "Build stage finished! " + env.GIT_BRANCH
                   }
         }
         stage('Upload') {
@@ -20,7 +23,7 @@ pipeline {
               label "build"
             }
             steps {
-                script{
+                script {
                     def getGitBranchName() {
                         return scm.branches[0].name
                                     }
