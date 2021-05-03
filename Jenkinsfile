@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
-                sh 'echo $BRANCH_NAME'
+                echo 'Pulling...' + env.BRANCH_NAME
 
                    }
         }
