@@ -5,7 +5,6 @@ pipeline {
             agent {
               label "build"
             }
-            
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
@@ -15,12 +14,8 @@ pipeline {
             agent {
               label "test"
             }
-            script{
-            def getGitBranchName() {
-    return scm.branches[0].name
-            }}
             steps {
-                sh 'echo Deploying' + getGitBranchName
+                sh 'echo Deploying'
             }
             
         }
