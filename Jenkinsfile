@@ -20,6 +20,11 @@ pipeline {
               label "build"
             }
             steps {
+                script{
+                    def getGitBranchName() {
+                        return scm.branches[0].name
+                                    }
+                }
                 sh 'echo Deploying' + getGitBranchName()
                 }
         }
