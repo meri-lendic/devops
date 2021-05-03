@@ -20,7 +20,7 @@ pipeline {
     return scm.branches[0].name
             }}
             steps {
-                sh 'echo Deploying' + getGitBranchName()
+                sh 'echo Deploying' + getGitBranchName
             }
             
         }
