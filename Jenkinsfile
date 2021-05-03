@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
-                echo "Pulling... + ${GIT_BRANCH,fullName=false}"
+                echo "Pulling... " + ${GIT_BRANCH,fullName=false}
 
                    }
         }
