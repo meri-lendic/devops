@@ -14,11 +14,12 @@ pipeline {
         }
         stage('Upload') {
             steps {
+                script{
                 def getGitBranchName() {
     return scm.branches[0].name
 }
                 sh 'echo Deploying'
-            }
+                }}
         }
     }
 }
