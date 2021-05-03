@@ -4,10 +4,10 @@ def getGitBranchName() {
 pipeline {
     agent none
     stages {
-        agent {
+        stage('Build') {
+            agent {
               label "build"
             }
-        stage('Build') {
             steps {
                 sh 'gcc main.c -o main.exe'
                 sh './main.exe'
@@ -16,6 +16,9 @@ pipeline {
                   }
         }
         stage('Upload') {
+            agent {
+              label "build"
+            }
             steps {
                 sh 'echo Deploying'
                 }
