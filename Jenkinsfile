@@ -21,7 +21,7 @@ pipeline {
     				failure {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
-                curl -XPOST -H "Authorization: token "$TokenForGitHub" https://github.com/meri-lendic/devops/$(git rev-parse HEAD) -d "{
+                curl -XPOST -H "Authorization: token "$TokenForGitHub" https://api.github.com/meri-lendic/devops/$(git rev-parse HEAD) -d "{
                     \"state\": \"failure\",
                     \"target_url\": \"${BUILD_URL}\",
                         \"description\": \"The build has failed!\"
@@ -32,7 +32,7 @@ pipeline {
 			   success {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
-                curl -XPOST -H "Authorization: token "$TokenForGitHub" https://github.com/meri-lendic/devops/main/statuses$(git rev-parse HEAD) -d "{
+                curl -XPOST -H "Authorization: token "$TokenForGitHub" https://api.github.com/meri-lendic/devops/statuses$(git rev-parse HEAD) -d "{
                     \"state\": \"success\",
                     \"target_url\": \"${BUILD_URL}\",
                         \"description\": \"The build has succeeded!\"
