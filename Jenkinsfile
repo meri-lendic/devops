@@ -32,7 +32,7 @@ pipeline {
 			   success {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
-	      curl -H "Authorization: Token $TokenForGitHub"" -X POST -d "{ \"body\": \"The build was succcess!\" }" "https://api.github.com/repos/meri-lendic/devops/issues/"
+	      curl -H "Authorization: Token "$TokenForGitHub"" -X POST -d "{ \"body\": \"The build was succcess!\" }" "https://api.github.com/repos/meri-lendic/devops/issues/"
                 curl -XPOST -H "Authorization: token "$TokenForGitHub"" https://api.github.com/repos/meri-lendic/devops/issues/$(git rev-parse HEAD) -d "{
                     \"state\": \"success\",
                     \"target_url\": \"${BUILD_URL}\"
