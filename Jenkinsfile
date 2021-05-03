@@ -2,7 +2,7 @@ def getGitBranchName() {
     return scm.branches[0].name
 }
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Build') {
             agent {
