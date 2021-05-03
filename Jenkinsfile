@@ -15,9 +15,14 @@ pipeline {
             agent {
               label "test"
             }
+            def getGitBranchName() {
+    return scm.branches[0].name
+}
             steps {
-                sh 'echo Deploying'
+                sh 'echo Deploying' + getGitBranchName()
             }
+            
         }
     }
 }
+    
