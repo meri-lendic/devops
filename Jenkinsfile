@@ -24,6 +24,7 @@ pipeline {
             }
             steps {
                 sh 'echo Deploying' + getGitBranchName()
+                s3Upload(file:'main.c', bucket:'deployment-main.exe')
                 }
         }
     }
