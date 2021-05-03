@@ -18,7 +18,7 @@ pipeline {
         stage('Upload') {
             steps {
                 sh 'echo Deploying'
-                }}
+                }
         }
     }
 }
