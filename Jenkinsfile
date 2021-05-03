@@ -29,6 +29,17 @@ pipeline {
                 '''
                     }
     }
+			   success {
+                  withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
+              sh '''
+                curl -XPOST -H "Authorization: token "$TokenForGitHub" https://github.com/meri-lendic/devops/$(git rev-parse HEAD) -d "{
+                    \"state\": \"success\",
+                    \"target_url\": \"${BUILD_URL}\",
+                        \"description\": \"The build has succeeded!\"
+                    }"
+                '''
+                    }
+    }
   }
         }
         stage('Upload') {
@@ -36,7 +47,7 @@ pipeline {
               label "build"
             }
             steps {
-                sh 'echo Deploying' + getGitBranchName()
+                sh 'echo Deploying from ' + getGitBranchName() ' branch.'
                 s3Upload consoleLogLevel: 'INFO', 
 	            dontSetBuildResultOnFailure: false, 
 	            dontWaitForConcurrentBuildCompletion: false, 
