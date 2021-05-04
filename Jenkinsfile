@@ -3,7 +3,6 @@ def getGitBranchName() {
 }
 pipeline {
     agent none
-	environment
     stages {
         stage('Build') {
 		environment {
