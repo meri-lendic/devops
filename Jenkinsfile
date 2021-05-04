@@ -50,7 +50,7 @@ pipeline {
                 s3Upload consoleLogLevel: 'INFO', 
 	            dontSetBuildResultOnFailure: false, 
 	            dontWaitForConcurrentBuildCompletion: false, 
-	            entries: [[bucket: deployment-main.exe, 
+	            entries: [[bucket: s3-deployment-main, 
 	            excludedFile: '', flatten: false, gzipFiles: false, 
 	            keepForever: false, managedArtifacts: false, noUploadOnFailure: true, 
 	            selectedRegion: 'eu-central-1', showDirectlyInBrowser: false, sourceFile: '**/*.exe', 
