@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Build') {
 		environment {
-        GIT_HUB_API= "https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT"
-               }
+			GIT_HUB_API= "https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT"
+		}
             //define an agent to run this stage
             agent {
               label "build"
