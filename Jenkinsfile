@@ -15,26 +15,19 @@ pipeline {
                     gcc main.c -o main.exe
                     ./main.exe
                     '''
-                echo "Build stage finished! " + env.GIT_BRANCH
+                echo "Build stage finished!"
                   }
 		   post {
-    				failure {
+			   //notifying GitHub in case of the failure
+			   failure {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
-	       curl -H "Authorization: Token "$TokenForGitHub"" -X POST -d "{ \"body\": \"The build was succcess!\" }" "https://api.github.com/repos/meri-lendic/devops/issues/"
-	        curl -XPOST -H "Authorization: token "$TokenForGitHub" https://api.github.com/meri-lendic/devops/$(git rev-parse HEAD) -d "{
-                    \"state\": \"failure\",
-                    \"target_url\": \"${BUILD_URL}\",
-                        \"description\": \"The build has failed!\"
-                    }"
-		                    curl -XPOST -H "Authorization: token "$TokenForGitHub"" https://api.github.com/repos/meri-lendic/devops/issues/$(git rev-parse HEAD) -d "{
-                    \"state\": \"success\",
-                    \"target_url\": \"${BUILD_URL}\",
-		    \"description\": \"The build was successful!\"
-                    }"
-                '''
+	      	      curl -X POST -H "Authorization: Token "$TokenForGitHub"" --data "{\\"state\\": \\"failure\\", \\"target_url\\": \\"${BUILD_URL}\\",
+		    \\"description\\": \\"The build has failed!\\"}" --url https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT
+	         '''
                     }
-    }
+			   }
+			   //notifying GitHub in case of the success
 			   success {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
@@ -42,8 +35,8 @@ pipeline {
 		    \\"description\\": \\"The build was successful!\\"}" --url https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT
 
                 '''
-                    }
-    }
+		  		  }
+    			}
   }
         }
         stage('Upload') {
