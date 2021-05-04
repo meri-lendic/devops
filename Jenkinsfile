@@ -46,6 +46,7 @@ pipeline {
               label "build"
             }
             steps {
+		    //upload into s3
                 s3Upload consoleLogLevel: 'INFO', 
 	            dontSetBuildResultOnFailure: false, 
 	            dontWaitForConcurrentBuildCompletion: false, 
