@@ -55,7 +55,7 @@ pipeline {
 	            keepForever: false, managedArtifacts: false, noUploadOnFailure: true, 
 	            selectedRegion: 'eu-central-1', showDirectlyInBrowser: false, sourceFile: '**/*.exe', 
                 storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: true]], 
-	            pluginFailureResultConstraint: 'FAILURE', profileName: 'S3-Deployment', userMetadata: []
+	            pluginFailureResultConstraint: 'FAILURE', profileName: 'S3-full-access', userMetadata: []
                      
         }
     }
