@@ -35,7 +35,7 @@ pipeline {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
 	      curl -X POST -H "Authorization: Token "$TokenForGitHub"" --data "{\\"state\\": \\"success\\", \\"target_url\\": \\"${BUILD_URL}\\",
-		    \\"description\\": \\"The build was successful!\\", \\"context\\": \\"jenkins build status\\"}" --url "${env.GIT_HUB_API}"
+		    \\"description\\": \\"The build was successful!\\", \\"context\\": \\"jenkins build status\\"}" --url env.GIT_HUB_API
                 '''
 		  		  }
     			}
