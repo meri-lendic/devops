@@ -23,7 +23,8 @@ pipeline {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
 	      	      curl -X POST -H "Authorization: Token "$TokenForGitHub"" --data "{\\"state\\": \\"failure\\", \\"target_url\\": \\"${BUILD_URL}\\",
-		    \\"description\\": \\"The build has failed!\\"}" --url https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT
+		     \\"context\\": \\"jenkins-build-status\\", \\"description\\": \\"The build has failed!\\"}" 
+		     --url https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT
 	         '''
                     }
 			   }
@@ -32,7 +33,8 @@ pipeline {
                   withCredentials([string(credentialsId: 'bf3b667a-5110-4b7f-afe7-357e8d5ef351', variable: 'TokenForGitHub')]) {
               sh '''
 	      curl -X POST -H "Authorization: Token "$TokenForGitHub"" --data "{\\"state\\": \\"success\\", \\"target_url\\": \\"${BUILD_URL}\\",
-		    \\"description\\": \\"The build was successful!\\"}" --url https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT
+		    \\"context\\": \\"jenkins-build-status\\", \\"description\\": \\"The build was successful!\\"}" 
+		    --url https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT
 
                 '''
 		  		  }
