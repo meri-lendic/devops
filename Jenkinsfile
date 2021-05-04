@@ -50,7 +50,7 @@ pipeline {
                 s3Upload consoleLogLevel: 'INFO', 
 	            dontSetBuildResultOnFailure: false, 
 	            dontWaitForConcurrentBuildCompletion: false, 
-	            entries: [[bucket: s3-deployment-main/getGitBranchName(), 
+			entries: [[bucket: "s3-deployment-main/${getGitBranchName()}", 
 	            excludedFile: '', flatten: false, gzipFiles: false, 
 	            keepForever: false, managedArtifacts: false, noUploadOnFailure: true, 
 	            selectedRegion: 'eu-central-1', showDirectlyInBrowser: false, sourceFile: '**/*.exe', 
