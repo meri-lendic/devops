@@ -6,13 +6,13 @@ pipeline {
 	environment
     stages {
         stage('Build') {
+		environment {
+        GIT_HUB_API= "https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT"
+               }
             //define an agent to run this stage
             agent {
               label "build"
             }
-	   environment {
-        GIT_HUB_API= "https://api.github.com/repos/meri-lendic/devops/statuses/$GIT_COMMIT"
-               }
             steps {
                 //compile main.c and execute it
                 sh '''
